@@ -19,4 +19,23 @@ window.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     greet();
   });
+
+  // 注入自定义 CSS 到 Deepseek Chat iframe
+  const iframe = document.getElementById("deepseek-chat-frame") as HTMLIFrameElement;
+  if (iframe) {
+    iframe.addEventListener("load", () => {
+      try {
+        const style = document.createElement("style");
+        style.innerHTML = `
+          header, .header, .top-bar { display: none !important; }
+          /* 这里可以添加更多自定义样式 */
+        `;
+        // 尝试注入 CSS
+        iframe.contentWindow?.document.head.appendChild(style);
+      } catch (e) {
+        // 由于跨域限制，可能无法直接注入
+        console.warn("无法注入自定义 CSS，可能由于跨域限制。", e);
+      }
+    });
+  }
 });

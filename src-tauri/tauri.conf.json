@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "com.lenovo.deepseek-shell",
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "npm run build",
-    "frontendDist": "../dist"
+    "beforeDevCommand": "",
+    "devUrl": "https://chat.deepseek.com/",
+    "beforeBuildCommand": "",
+    "frontendDist": "https://chat.deepseek.com/"
   },
   "app": {
     "withGlobalTauri": true,
