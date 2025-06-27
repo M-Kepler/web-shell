@@ -24,7 +24,7 @@ The goal is to provide DeepSeek users with a Doubao-like desktop experience, but
 
 ## Download & Usage
 
-- **Download**: [Click here for the latest installer](https://your-download-link.com)
+- **Download**: [Click here for the latest installer](https://github.com/benhack20/deepseek-shell/releases/download/v1.0.0/deepseek-shell_0.1.0_x64-setup.exe)
 - **Installation**:
   1. Download the installer for your platform (Windows provided; macOS/Linux can be built manually).
   2. Follow the prompts to complete installation.

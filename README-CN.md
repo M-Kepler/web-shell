@@ -24,7 +24,7 @@
 
 ## 下载安装包与使用方式
 
-- **下载地址**：[点击下载最新版安装包](https://your-download-link.com)
+- **下载地址**：[点击下载最新版安装包](https://github.com/benhack20/deepseek-shell/releases/download/v1.0.0/deepseek-shell_0.1.0_x64-setup.exe)
 - **安装方式**：
 
   1. 下载对应平台的安装包（Windows已提供，macOS、Linux未提供，可自行编译）。
