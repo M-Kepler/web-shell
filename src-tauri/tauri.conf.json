@@ -16,7 +16,7 @@
         "title": "deepseek-shell",
         "width": 400,
         "height": 700,
-        "visible": false
+        "visible": true
       }
     ],
     "security": {
@@ -27,6 +27,7 @@
     "active": true,
     "targets": "all",
     "icon": [
+      "icons/icon.ico",
       "icons/deepseek.ico",
       "icons/deepseek.png"
     ],

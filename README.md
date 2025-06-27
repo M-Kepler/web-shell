@@ -1,12 +1,45 @@
-# Deepseek Shell 桌面端开发说明
+# DeepSeek Desktop (DeepSeek-Shell)
 
-本项目基于 [Tauri](https://tauri.app/) + [Vite](https://vitejs.dev/) 构建，支持跨平台桌面端开发。
+> 中文版说明请看 [README-CN.md](./README-CN.md)
+
+## Project Overview
+
+**DeepSeek Desktop (DeepSeek-Shell)** is a minimal, efficient, and lightweight (only ~8MB) desktop client for DeepSeek. Inspired by the convenience of Doubao Desktop, users can summon a compact chat window anytime with the `Alt+Space` shortcut to quickly interact with DeepSeek Chat.
+
+This project is built with [Tauri](https://tauri.app/) + [Vite](https://vitejs.dev/), featuring:
+
+- **Tiny Size**: Installer is only about 8MB, with extremely low resource usage for fast download and startup.
+- **Minimal Desktop Client**: Instantly summon the app with a shortcut, no need to switch windows, ask questions anytime.
+- **DeepSeek Power**: Directly leverages DeepSeek Chat's powerful AI via the web, supporting native account login.
+- **UI Adaptation**: Designed for small window scenarios, with a clean interface and efficient interactions.
+- **System Tray Support**: Minimize to tray, tray menu, and easy background access.
+- **Cross-Platform**: Supports Windows, macOS, and Linux.
+- **Secure & Reliable**: Local shell connects to official DeepSeek services, ensuring data security.
+
+The goal is to provide DeepSeek users with a Doubao-like desktop experience, but with stronger AI, better UI adaptation, and a much smaller footprint.
+
+![1751031319359](image/README/1751031319359.png)
 
 ---
 
-## 1. 安装依赖
+## Download & Usage
 
-在项目根目录下运行（只需一次）：
+- **Download**: [Click here for the latest installer](https://your-download-link.com)
+- **Installation**:
+  1. Download the installer for your platform (Windows provided; macOS/Linux can be built manually).
+  2. Follow the prompts to complete installation.
+- **Usage (ensure Alt+Space is not occupied)**:
+  1. After installation, run DeepSeek-Shell.
+  2. Use `Alt+Space` to **show or hide** the chat window at any time.
+  3. Closing the window minimizes it to the system tray.
+  4. Right-click the tray icon to set auto-start on boot.
+  5. Log in to your DeepSeek account to start chatting with AI.
+
+---
+
+## 1. Install Dependencies
+
+In the project root directory, run (once):
 
 ```bash
 npm install
@@ -14,66 +47,65 @@ npm install
 
 ---
 
-## 2. 启动开发模式
+## 2. Start Development Mode
 
-开发时，Tauri 会自动启动前端和桌面端，支持热重载。
+During development, Tauri will auto-launch both frontend and desktop, with hot reload support.
 
 ```bash
 npm run tauri dev
 ```
 
-- 这会打开一个桌面窗口，实时预览前端页面。
-- 可以在 `src/` 里开发前端页面，`src-tauri/` 里开发 Rust 后端。
+- This opens a desktop window for real-time preview.
+- Develop frontend in `src/`, backend (Rust) in `src-tauri/`.
 
 ---
 
-## 3. 运行前端（仅网页预览）
+## 3. Run Frontend Only (Web Preview)
 
-如果只想预览前端页面（不启动桌面端）：
+To preview only the frontend (without desktop shell):
 
 ```bash
 npm run dev
 ```
 
-- 这会用 Vite 启动本地开发服务器，通常访问 http://localhost:5173。
+- This starts a Vite dev server, usually at http://localhost:5173.
 
 ---
 
-## 4. 打包发布
+## 4. Build for Release
 
-打包成可分发的桌面应用（.exe、.dmg、.AppImage等）：
+Package as a distributable desktop app (`.exe`, `.dmg`, `.AppImage`, etc.):
 
 ```bash
 npm run tauri build
 ```
 
-- 生成的安装包在 `src-tauri/target/release/bundle/` 目录下。
-- Windows 下会有 `.msi` 或 `.exe` 安装包。
+- Output is in `src-tauri/target/release/bundle/`.
+- On Windows, you'll get `.msi` or `.exe` installers.
 
 ---
 
-## 5. 其他常用命令
+## 5. Other Useful Commands
 
-- **清理构建缓存**
+- **Clean build cache**
   ```bash
   npm run tauri clean
   ```
-- **升级 Tauri 依赖**
+- **Update Tauri dependencies**
   ```bash
   npm update
   ```
 
 ---
 
-## 6. 常见问题
+## 6. FAQ
 
-- **首次运行报错**：确保已安装 Rust 环境（Tauri 需要），可用 [Rust 官网](https://www.rust-lang.org/tools/install) 安装。
-- **Windows 下依赖**：建议安装 [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)。
-- **权限问题**：有时需要用管理员权限运行命令行。
+- **First run error**: Make sure Rust is installed ([Rust official site](https://www.rust-lang.org/tools/install)), required by Tauri.
+- **Windows dependencies**: It's recommended to install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
 
 ---
 
-## 7. 官方文档
+## 7. Official Docs
 
-- [Tauri 官方文档](https://tauri.app/v1/guides/getting-started/prerequisites/)
-- [Vite 官方文档](https://vitejs.dev/guide/)
+- [Tauri Documentation](https://tauri.app/v1/guides/getting-started/prerequisites/)
+- [Vite Documentation](https://vitejs.dev/guide/)

@@ -72,7 +72,7 @@ pub fn run() {
             // 让主窗口居中并隐藏
             if let Some(window) = app.get_webview_window("main") {
                 let _ = window.center();
-                let _ = window.hide();
+                // let _ = window.hide(); // 移除隐藏主窗口
             }
 
             // 注册 alt+space 全局快捷键
