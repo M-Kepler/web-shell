@@ -1,4 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
+import { register } from '@tauri-apps/plugin-global-shortcut';
+import { Window } from '@tauri-apps/api/window';
 
 let greetInputEl: HTMLInputElement | null;
 let greetMsgEl: HTMLElement | null;
@@ -38,4 +40,16 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // 注册 Alt+Space 全局快捷键，显示主窗口并聚焦
+  register('Alt+Space', async (event: { state: string }) => {
+    if (event.state === "Pressed") {
+      const win = await Window.getByLabel('main');
+      if (win) {
+        await win.show();
+        await win.setFocus();
+      }
+      // 由于安全策略，无法自动聚焦网页内输入框
+    }
+  });
 });

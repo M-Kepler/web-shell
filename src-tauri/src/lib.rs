@@ -1,5 +1,6 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use tauri::{menu::MenuBuilder, tray::TrayIconBuilder, Manager, WindowEvent};
+use tauri_plugin_global_shortcut::{Code, Modifiers, ShortcutState};
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -35,6 +36,24 @@ pub fn run() {
                     _ => {}
                 })
                 .build(app)?;
+
+            // 注册 alt+space 全局快捷键
+            app.handle().plugin(
+                tauri_plugin_global_shortcut::Builder::new()
+                    .with_shortcuts(["alt+space"])?
+                    .with_handler(|app, shortcut, event| {
+                        if event.state == ShortcutState::Pressed {
+                            if shortcut.matches(Modifiers::ALT, Code::Space) {
+                                if let Some(window) = app.get_webview_window("main") {
+                                    let _ = window.show();
+                                    let _ = window.set_focus();
+                                }
+                            }
+                        }
+                    })
+                    .build(),
+            )?;
+
             Ok(())
         })
         .on_window_event(|app, event| {
