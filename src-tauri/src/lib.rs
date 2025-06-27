@@ -1,6 +1,7 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use tauri::{menu::MenuBuilder, tray::TrayIconBuilder, Manager, WindowEvent};
 use tauri_plugin_global_shortcut::{Code, Modifiers, ShortcutState};
+use tauri::image::Image;
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -15,7 +16,7 @@ pub fn run() {
         .setup(|app| {
             // 创建菜单
             let menu = MenuBuilder::new(app)
-                .text("show", "显示主窗口")
+                .text("show", "主窗口（Alt+Space）")
                 .text("quit", "退出")
                 .build()?;
 
@@ -37,6 +38,12 @@ pub fn run() {
                 })
                 .build(app)?;
 
+            // 让主窗口居中
+            if let Some(window) = app.get_webview_window("main") {
+                let _ = window.center();
+                let _ = window.hide();
+            }
+
             // 注册 alt+space 全局快捷键
             app.handle().plugin(
                 tauri_plugin_global_shortcut::Builder::new()
@@ -45,8 +52,14 @@ pub fn run() {
                         if event.state == ShortcutState::Pressed {
                             if shortcut.matches(Modifiers::ALT, Code::Space) {
                                 if let Some(window) = app.get_webview_window("main") {
-                                    let _ = window.show();
-                                    let _ = window.set_focus();
+                                    if let Ok(visible) = window.is_visible() {
+                                        if visible {
+                                            let _ = window.hide();
+                                        } else {
+                                            let _ = window.show();
+                                            let _ = window.set_focus();
+                                        }
+                                    }
                                 }
                             }
                         }
