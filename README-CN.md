@@ -1,5 +1,21 @@
 # DeepSeek 桌面端 （DeepSeek Desktop)
 
+
+## 安装包与使用方式
+
+- **下载地址**：[点击下载最新版安装包]（https://gitee.com/xxdxxdxxd/deepseek-shell/releases/tag/v1.0.0）
+- **安装方式**：
+
+  1. 下载对应平台的安装包（Windows安装包已提供，macOS、Linux未提供，可自行编译）。
+  2. 按照提示完成安装。
+- **使用方式（请确保alt+space快捷键未被占用）**：
+
+  1. 安装完成后，运行 Deepseek-Shell 桌面端。
+  2. 可通过 `Alt+Space` 快捷键随时**唤出或隐藏**聊天窗口。
+  3. 关闭窗口后自动收至系统托盘处。
+  4. 托盘右键点击可设置开机启动。
+  5. 登录你的 Deepseek 账户，即可开始与 AI 对话。
+
 ---
 
 ## 项目简介
@@ -22,22 +38,6 @@
 
 ---
 
-## 下载安装包与使用方式
-
-- **下载地址**：[点击下载最新版安装包](https://github.com/benhack20/deepseek-shell/releases/download/v1.0.0/deepseek-shell_0.1.0_x64-setup.exe)
-- **安装方式**：
-
-  1. 下载对应平台的安装包（Windows已提供，macOS、Linux未提供，可自行编译）。
-  2. 按照提示完成安装。
-- **使用方式（请确保alt+space快捷键未被占用）**：
-
-  1. 安装完成后，运行 Deepseek-Shell 桌面端。
-  2. 可通过 `Alt+Space` 快捷键随时**唤出或隐藏**聊天窗口。
-  3. 关闭窗口后自动收至系统托盘处。
-  4. 托盘右键点击可设置开机启动。
-  5. 登录你的 Deepseek 账户，即可开始与 AI 对话。
-
----
 
 ## 1. 安装依赖
 
