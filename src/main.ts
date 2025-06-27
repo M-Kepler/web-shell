@@ -1,6 +1,10 @@
 import { invoke } from "@tauri-apps/api/core";
 import { register } from '@tauri-apps/plugin-global-shortcut';
 import { Window } from '@tauri-apps/api/window';
+import { enable, disable } from '@tauri-apps/plugin-autostart';
+import { invoke as tauriInvoke } from '@tauri-apps/api/tauri';
+import { exists, writeTextFile } from '@tauri-apps/api/fs';
+import { appConfigDir } from '@tauri-apps/api/path';
 
 let greetInputEl: HTMLInputElement | null;
 let greetMsgEl: HTMLElement | null;
@@ -13,6 +17,40 @@ async function greet() {
     });
   }
 }
+
+async function checkAndSetAutostart() {
+  try {
+    // 检查 autostart.flag 是否存在
+    const exists = await tauriInvoke('plugin:fs|exists', { path: 'autostart.flag' });
+    if (exists) {
+      await enable();
+      // 删除标志文件
+      await tauriInvoke('plugin:fs|removeFile', { path: 'autostart.flag' });
+    }
+  } catch (e) {
+    // 忽略错误
+  }
+}
+
+async function checkFirstRunAndPrompt() {
+  const configDir = await appConfigDir();
+  const flagPath = configDir + 'autostart_prompted.flag';
+  const prompted = await exists(flagPath);
+
+  if (!prompted) {
+    // 你可以用更美观的 UI 组件替换 window.confirm
+    const shouldAutostart = window.confirm('是否开机自启？（推荐，默认勾选）');
+    if (shouldAutostart) {
+      await enable();
+    } else {
+      await disable();
+    }
+    await writeTextFile(flagPath, '1');
+  }
+}
+
+checkAndSetAutostart();
+checkFirstRunAndPrompt();
 
 window.addEventListener("DOMContentLoaded", () => {
   greetInputEl = document.querySelector("#greet-input");

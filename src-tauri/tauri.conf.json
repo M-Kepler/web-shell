@@ -29,6 +29,9 @@
     "icon": [
       "icons/deepseek.ico",
       "icons/deepseek.png"
-    ]
+    ],
+    "windows": {
+      "nsis": {}
+    }
   }
 }
