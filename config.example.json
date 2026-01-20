@@ -1,0 +1,36 @@
+{
+  "app": {
+    "name": "Web Shell",
+    "version": "1.0.0"
+  },
+  "window": {
+    "title": "Web Shell",
+    "width": 400,
+    "height": 700,
+    "resizable": true,
+    "fullscreen": false,
+    "decorations": false
+  },
+  "web": {
+    "url": "https://www.kimi.com/",
+    "title": "Kimi Chat",
+    "allow": "clipboard-write; clipboard-read;"
+  },
+  "hotkey": {
+    "show": "Alt+Space",
+    "hide": "Alt+Space"
+  },
+  "autostart": {
+    "enabled": false,
+    "promptOnFirstRun": true
+  },
+  "tray": {
+    "enabled": true,
+    "menu": {
+      "show": "显示窗口",
+      "autostart": "开机自启",
+      "autostartDisable": "取消开机自启",
+      "quit": "退出"
+    }
+  }
+}

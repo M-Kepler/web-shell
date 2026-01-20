@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    deepseek_shell_lib::run();
+    web_shell_lib::run();
 }

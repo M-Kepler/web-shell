@@ -1,19 +1,19 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "deepseek-shell",
+  "productName": "web-shell",
   "version": "0.1.0",
-  "identifier": "com.lenovo.deepseek-shell",
+  "identifier": "com.lenovo.web-shell",
   "build": {
     "beforeDevCommand": "",
-    "devUrl": "https://chat.deepseek.com/",
+    "devUrl": "https://www.kimi.com/",
     "beforeBuildCommand": "",
-    "frontendDist": "https://chat.deepseek.com/"
+    "frontendDist": "https://www.kimi.com/"
   },
   "app": {
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "deepseek-shell",
+        "title": "Web Shell",
         "width": 400,
         "height": 700,
         "visible": true

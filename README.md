@@ -1,22 +1,23 @@
-# DeepSeek Desktop (DeepSeek-Shell)
+# Web Shell (通用桌面壳应用)
 
 > 中文版说明请看 [README-CN.md](./README-CN.md)
 
 ## Project Overview
 
-**DeepSeek Desktop (DeepSeek-Shell)** is a minimal, efficient, and lightweight (only ~8MB) desktop client for DeepSeek. Inspired by the convenience of Doubao Desktop, users can summon a compact chat window anytime with the `Alt+Space` shortcut to quickly interact with DeepSeek Chat.
+**Web Shell** is a minimal, efficient, and lightweight (only ~8MB) desktop shell application that can open any website. Inspired by the convenience of Doubao Desktop, users can summon a compact window anytime with the `Alt+Space` shortcut to quickly access any web service.
 
 This project is built with [Tauri](https://tauri.app/) + [Vite](https://vitejs.dev/), featuring:
 
 - **Tiny Size**: Installer is only about 8MB, with extremely low resource usage for fast download and startup.
-- **Minimal Desktop Client**: Instantly summon the app with a shortcut, no need to switch windows, ask questions anytime.
-- **DeepSeek Power**: Directly leverages DeepSeek Chat's powerful AI via the web, supporting native account login.
+- **Universal Web Access**: Open any website by configuring the URL, not limited to a specific service.
+- **Customizable Hotkey**: Configure your preferred shortcut key to show/hide the window.
+- **Minimal Desktop Client**: Instantly summon the app with a shortcut, no need to switch windows, access web services anytime.
 - **UI Adaptation**: Designed for small window scenarios, with a clean interface and efficient interactions.
 - **System Tray Support**: Minimize to tray, tray menu, and easy background access.
 - **Cross-Platform**: Supports Windows, macOS, and Linux.
-- **Secure & Reliable**: Local shell connects to official DeepSeek services, ensuring data security.
+- **Secure & Reliable**: Local shell connects to official web services, ensuring data security.
 
-The goal is to provide DeepSeek users with a Doubao-like desktop experience, but with stronger AI, better UI adaptation, and a much smaller footprint.
+The goal is to provide a flexible desktop experience for any web service, with customizable configuration and a much smaller footprint.
 
 ![1751031319359](image/README/1751031319359.png)
 
@@ -24,16 +25,115 @@ The goal is to provide DeepSeek users with a Doubao-like desktop experience, but
 
 ## Download & Usage
 
-- **Download**: [Click here for the latest installer](https://github.com/benhack20/deepseek-shell/releases/download/v1.0.0/deepseek-shell_0.1.0_x64-setup.exe)
+- **Download**: [Click here for the latest installer](https://github.com/benhack20/web-shell/releases/download/v1.0.0/web-shell_0.1.0_x64-setup.exe)
 - **Installation**:
   1. Download the installer for your platform (Windows provided; macOS/Linux can be built manually).
   2. Follow the prompts to complete installation.
 - **Usage (ensure Alt+Space is not occupied)**:
-  1. After installation, run DeepSeek-Shell.
-  2. Use `Alt+Space` to **show or hide** the chat window at any time.
+  1. After installation, run Web Shell.
+  2. Use `Alt+Space` to **show or hide** the window at any time.
   3. Closing the window minimizes it to the system tray.
   4. Right-click the tray icon to set auto-start on boot.
-  5. Log in to your DeepSeek account to start chatting with AI.
+  5. The window will open the configured website (default: Kimi Chat).
+
+---
+
+## Configuration
+
+Web Shell uses a JSON configuration file located at:
+- **Windows**: `%APPDATA%\com.lenovo.web-shell\config.json`
+- **macOS**: `~/Library/Application Support/com.lenovo.web-shell/config.json`
+- **Linux**: `~/.config/com.lenovo.web-shell/config.json`
+
+### Configuration Options
+
+```json
+{
+  "app": {
+    "name": "Web Shell",
+    "version": "1.0.0"
+  },
+  "window": {
+    "title": "Web Shell",
+    "width": 400,
+    "height": 700,
+    "resizable": true,
+    "fullscreen": false,
+    "decorations": false
+  },
+  "web": {
+    "url": "https://www.kimi.com/",
+    "title": "Kimi Chat",
+    "allow": "clipboard-write; clipboard-read;"
+  },
+  "hotkey": {
+    "show": "Alt+Space",
+    "hide": "Alt+Space"
+  },
+  "autostart": {
+    "enabled": false,
+    "promptOnFirstRun": true
+  },
+  "tray": {
+    "enabled": true,
+    "menu": {
+      "show": "显示窗口",
+      "autostart": "开机自启",
+      "autostartDisable": "取消开机自启",
+      "quit": "退出"
+    }
+  }
+}
+```
+
+### Configuration Examples
+
+**Example 1: Open Kimi Chat**
+```json
+{
+  "web": {
+    "url": "https://www.kimi.com/",
+    "title": "Kimi Chat"
+  }
+}
+```
+
+**Example 2: Open ChatGPT**
+```json
+{
+  "web": {
+    "url": "https://chat.openai.com/",
+    "title": "ChatGPT"
+  }
+}
+```
+
+**Example 3: Open GitHub**
+```json
+{
+  "web": {
+    "url": "https://github.com/",
+    "title": "GitHub"
+  },
+  "window": {
+    "title": "GitHub",
+    "width": 800,
+    "height": 600
+  }
+}
+```
+
+**Example 4: Custom Hotkey**
+```json
+{
+  "hotkey": {
+    "show": "Alt+Shift+S",
+    "hide": "Alt+Shift+S"
+  }
+}
+```
+
+**Note**: The configuration file is automatically created on first run with default values. You can modify it and restart the application to apply changes.
 
 ---
 
